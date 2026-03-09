@@ -1,0 +1,23 @@
+/workspace/maven_repo_scraper/__init__.py
+/workspace/maven_repo_scraper/repository_client.py
+/workspace/maven_repo_scraper/dependency_resolver.py
+/workspace/maven_repo_scraper/config.py
+/workspace/maven_repo_scraper/main.py
+/workspace/maven_repo_scraper/pom_parser.py
+/workspace/maven_repo_scraper/output_generator.py
+/workspace/maven_repo_scraper/local_repository.py
+/workspace/maven_repo_scraper/logger.py
+---
+total 172
+drwxr-xr-x 3 root root  4096 Mar  9 03:44 .
+drwxr-xr-x 5 user user  4096 Mar  9 03:42 ..
+-rw-r--r-- 1 root root  1987 Mar  9 03:43 __init__.py
+drwxr-xr-x 2 root root  4096 Mar  9 03:44 __pycache__
+-rw-r--r-- 1 root root 14364 Mar  9 03:29 config.py
+-rw-r--r-- 1 root root 20030 Mar  9 03:36 dependency_resolver.py
+-rw-r--r-- 1 root root 16892 Mar  9 03:41 local_repository.py
+-rw-r--r-- 1 root root 10605 Mar  9 03:30 logger.py
+-rw-r--r-- 1 root root 17033 Mar  9 03:39 main.py
+-rw-r--r-- 1 root root 14587 Mar  9 03:38 output_generator.py
+-rw-r--r-- 1 root root 24496 Mar  9 03:32 pom_parser.py
+-rw-r--r-- 1 root root 25473 Mar  9 03:34 repository_client.py

@@ -1,0 +1,73 @@
+usage: maven_scraper.py [-h] [--add-repo URL] [--local-repo PATH]
+                        [--config-file PATH] [--xml-validation {simple,xsd}]
+                        [--xsd-file FILENAME] [--xsd-url URL] [--xsd-dir PATH]
+                        [--output-dir PATH] [--tree-dir-name NAME]
+                        [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}]
+                        [--no-file-log] [--no-console-log]
+                        [--log-file FILENAME] [--max-retries N]
+                        [--retry-delay SECONDS] [--timeout SECONDS]
+                        [--max-depth N] [--min-jar-size BYTES]
+                        [--save-config PATH] [--dry-run] [--verbose]
+
+Maven Repository Scraper and Maintenance Tool
+
+options:
+  -h, --help            show this help message and exit
+
+Repository Settings:
+  --add-repo URL, --ar URL
+                        Add a repository URL (can be used multiple times)
+  --local-repo PATH, --lr PATH
+                        Local repository path (default: user/.m2/repository)
+  --config-file PATH, -c PATH
+                        Load configuration from a JSON file
+
+XML Validation Settings:
+  --xml-validation {simple,xsd}, --xv {simple,xsd}
+                        XML validation mode: simple (check <?xml header) or
+                        xsd (validate against XSD schema)
+  --xsd-file FILENAME   Name of the XSD file to use for validation
+  --xsd-url URL         URL to download XSD schema from
+  --xsd-dir PATH        Directory containing XSD file (default: script
+                        directory)
+
+Output Settings:
+  --output-dir PATH, -o PATH
+                        Output directory for dependency trees (default: script
+                        directory)
+  --tree-dir-name NAME  Name of the dependency tree output directory
+
+Logging Settings:
+  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}
+                        Logging level
+  --no-file-log         Disable logging to file
+  --no-console-log      Disable logging to console
+  --log-file FILENAME   Log file name
+
+Scraper Behavior Settings:
+  --max-retries N       Maximum number of retry attempts for downloads
+  --retry-delay SECONDS
+                        Delay between retry attempts
+  --timeout SECONDS     Download timeout in seconds
+  --max-depth N         Maximum dependency resolution depth
+  --min-jar-size BYTES  Minimum valid JAR file size in bytes (default: 5120 =
+                        5KB)
+
+Utility Options:
+  --save-config PATH    Save current configuration to a JSON file and exit
+  --dry-run             Show what would be done without actually downloading
+  --verbose, -v         Enable verbose output
+
+Examples:
+  # Basic usage with default settings
+  python maven_scraper.py
+  
+  # Add custom repositories
+  python maven_scraper.py --add-repo https://my.repo.com/maven2
+  
+  # Use simple XML validation instead of XSD
+  python maven_scraper.py --xml-validation simple
+  
+  # Custom output directory
+  python maven_scraper.py --output-dir /path/to/output
+        

@@ -1,0 +1,13 @@
+python maven_scraper.py
+For dry-run (see what would be done):
+
+
+python maven_scraper.py --dry-run
+For simple XML validation (faster):
+
+
+python maven_scraper.py --xml-validation simple
+To add custom repositories:
+
+
+python maven_scraper.py --add-repo https://my.repo.com/maven2
