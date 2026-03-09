@@ -1,0 +1,28 @@
+def main():
+    """Main entry point."""
+    # Get script directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Parse configuration
+    config = get_config(script_dir)
+    
+    # Create and run application
+    app = MavenScraperApp(config)
+    
+    # Get mode flags from sys.argv (not passed to config)
+    dry_run = '--dry-run' in sys.argv
+    local_only = '--local-only' in sys.argv
+    validate_local = '--validate-local' in sys.argv
+    
+    # Run the application
+    exit_code = app.run(
+        dry_run=dry_run,
+        local_only=local_only,
+        validate_local=validate_local
+    )
+    
+    sys.exit(exit_code)
+
+
+if __name__ == "__main__":
+    main()

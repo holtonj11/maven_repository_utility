@@ -333,6 +333,41 @@ Examples:
         action='store_true',
         help='When used with --local-only, also validate all POM and JAR files in the local repository.'
     )
+    mode_group.add_argument(
+        '--download', '-d',
+        action='append',
+        dest='download_coordinates',
+        metavar='COORD',
+        help='Download a specific library by Maven coordinate (groupId:artifactId[:version]). Can be used multiple times.'
+    )
+    mode_group.add_argument(
+        '--download-file',
+        metavar='PATH',
+        help='Read library coordinates from a file (one coordinate per line).'
+    )
+    mode_group.add_argument(
+        '--no-deps',
+        action='store_true',
+        help='When downloading specific libraries, skip downloading their dependencies.'
+    )
+    mode_group.add_argument(
+        '--discover-group',
+        action='append',
+        dest='discover_groups',
+        metavar='GROUP_ID',
+        help='Discover and download all libraries from a specific group ID (e.g., org.springframework). Can be used multiple times.'
+    )
+    mode_group.add_argument(
+        '--use-search-api',
+        action='store_true',
+        default=True,
+        help='Use Maven Central Search API for faster discovery (default: True)'
+    )
+    mode_group.add_argument(
+        '--no-search-api',
+        action='store_true',
+        help='Disable Maven Central Search API and use directory traversal instead.'
+    )
     
     # Utility arguments
     util_group = parser.add_argument_group('Utility Options')
@@ -423,6 +458,13 @@ def build_config_from_args(args: argparse.Namespace, script_dir: str) -> Scraper
         max_dependency_depth=args.max_depth,
         min_jar_size_bytes=args.min_jar_size
     )
+    
+    # Store download-related args as dynamic attributes
+    config.download_coordinates = getattr(args, 'download_coordinates', None)
+    config.download_file = getattr(args, 'download_file', None)
+    config.no_deps = getattr(args, 'no_deps', False)
+    config.discover_groups = getattr(args, 'discover_groups', None)
+    config.use_search_api = not getattr(args, 'no_search_api', False)
     
     return config
 

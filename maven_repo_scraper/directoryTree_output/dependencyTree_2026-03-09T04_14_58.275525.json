@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "generated": "2026-03-09T04:14:58.275807",
+    "totalLibraries": 4,
+    "librariesWithIssues": 4
+  },
+  "rootLibraries": [
+    {
+      "library": "commons-logging:commons-logging:1.2",
+      "version": "",
+      "filePath": "/root/.m2/repository/commons-logging/commons-logging/1.2",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "commons-logging:commons-logging:1.2",
+      "dependencies": []
+    },
+    {
+      "library": "org.springframework:spring-jcl:5.3.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/org/springframework/spring-jcl/5.3.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "org.springframework:spring-jcl:5.3.0",
+      "dependencies": []
+    },
+    {
+      "library": "org.springframework:spring-core:5.3.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/org/springframework/spring-core/5.3.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "org.springframework:spring-core:5.3.0",
+      "dependencies": []
+    },
+    {
+      "library": "com.example:sample-lib:1.0.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/com/example/sample-lib/1.0.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "com.example:sample-lib:1.0.0",
+      "dependencies": []
+    }
+  ],
+  "allLibraries": [
+    {
+      "library": "com.example:sample-lib:1.0.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/com/example/sample-lib/1.0.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "parentLibraryPath": "com.example:sample-lib:1.0.0",
+      "dependencyCount": 0
+    },
+    {
+      "library": "commons-logging:commons-logging:1.2",
+      "version": "",
+      "filePath": "/root/.m2/repository/commons-logging/commons-logging/1.2",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "parentLibraryPath": "commons-logging:commons-logging:1.2",
+      "dependencyCount": 0
+    },
+    {
+      "library": "org.springframework:spring-core:5.3.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/org/springframework/spring-core/5.3.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "parentLibraryPath": "org.springframework:spring-core:5.3.0",
+      "dependencyCount": 0
+    },
+    {
+      "library": "org.springframework:spring-jcl:5.3.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/org/springframework/spring-jcl/5.3.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "parentLibraryPath": "org.springframework:spring-jcl:5.3.0",
+      "dependencyCount": 0
+    }
+  ]
+}

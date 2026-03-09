@@ -1,0 +1,96 @@
+2026-03-09 04:14:58 | [32mINFO[0m | Running in LOCAL-ONLY mode - scanning local repository
+2026-03-09 04:14:58 | [32mINFO[0m | Local repository: /root/.m2/repository
+2026-03-09 04:14:58 | [32mINFO[0m | Scanning local repository...
+2026-03-09 04:14:58 | [32mINFO[0m | Scanning local repository: /root/.m2/repository
+2026-03-09 04:14:58 | [32mINFO[0m | Scan complete: 4 libraries found
+2026-03-09 04:14:58 | [32mINFO[0m | Found 4 libraries in local repository
+2026-03-09 04:14:58 | [32mINFO[0m | Validating local repository...
+2026-03-09 04:14:58 | [32mINFO[0m | Validating local repository...
+2026-03-09 04:14:58 | [32mINFO[0m | Scanning local repository: /root/.m2/repository
+2026-03-09 04:14:58 | [32mINFO[0m | Scan complete: 4 libraries found
+2026-03-09 04:14:58 | [32mINFO[0m | Validation complete: 4/4 libraries with issues
+2026-03-09 04:14:58 | [32mINFO[0m | ============================================================
+2026-03-09 04:14:58 | [32mINFO[0m | VALIDATION RESULTS
+2026-03-09 04:14:58 | [32mINFO[0m | ============================================================
+2026-03-09 04:14:58 | [32mINFO[0m | Total libraries: 4
+2026-03-09 04:14:58 | [32mINFO[0m | Libraries with issues: 4
+2026-03-09 04:14:58 | [32mINFO[0m | 
+Issues by type:
+2026-03-09 04:14:58 | [32mINFO[0m |   JAR file is invalid: 1
+2026-03-09 04:14:58 | [32mINFO[0m |   POM file is missing: 4
+2026-03-09 04:14:58 | [32mINFO[0m | Resolving dependencies from local POM files...
+2026-03-09 04:14:58 | [32mINFO[0m | Attempting to re-download POM for commons-logging:commons-logging:1.2
+2026-03-09 04:14:58 | [31mERROR[0m | Error resolving library commons-logging:commons-logging:1.2: 'NoneType' object has no attribute 'download_library'
+Traceback (most recent call last):
+  File "/workspace/maven_repo_scraper/dependency_resolver.py", line 270, in resolve_library
+    self._attempt_pom_redownload(library, pom_issues)
+  File "/workspace/maven_repo_scraper/dependency_resolver.py", line 387, in _attempt_pom_redownload
+    success, downloaded, errors = self.repository_client.download_library(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'download_library'
+2026-03-09 04:14:58 | [32mINFO[0m | Attempting to re-download POM for org.springframework:spring-jcl:5.3.0
+2026-03-09 04:14:58 | [31mERROR[0m | Error resolving library org.springframework:spring-jcl:5.3.0: 'NoneType' object has no attribute 'download_library'
+Traceback (most recent call last):
+  File "/workspace/maven_repo_scraper/dependency_resolver.py", line 270, in resolve_library
+    self._attempt_pom_redownload(library, pom_issues)
+  File "/workspace/maven_repo_scraper/dependency_resolver.py", line 387, in _attempt_pom_redownload
+    success, downloaded, errors = self.repository_client.download_library(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'download_library'
+2026-03-09 04:14:58 | [32mINFO[0m | Attempting to re-download POM for org.springframework:spring-core:5.3.0
+2026-03-09 04:14:58 | [31mERROR[0m | Error resolving library org.springframework:spring-core:5.3.0: 'NoneType' object has no attribute 'download_library'
+Traceback (most recent call last):
+  File "/workspace/maven_repo_scraper/dependency_resolver.py", line 270, in resolve_library
+    self._attempt_pom_redownload(library, pom_issues)
+  File "/workspace/maven_repo_scraper/dependency_resolver.py", line 387, in _attempt_pom_redownload
+    success, downloaded, errors = self.repository_client.download_library(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'download_library'
+2026-03-09 04:14:58 | [32mINFO[0m | Attempting to re-download POM for com.example:sample-lib:1.0.0
+2026-03-09 04:14:58 | [31mERROR[0m | Error resolving library com.example:sample-lib:1.0.0: 'NoneType' object has no attribute 'download_library'
+Traceback (most recent call last):
+  File "/workspace/maven_repo_scraper/dependency_resolver.py", line 270, in resolve_library
+    self._attempt_pom_redownload(library, pom_issues)
+  File "/workspace/maven_repo_scraper/dependency_resolver.py", line 387, in _attempt_pom_redownload
+    success, downloaded, errors = self.repository_client.download_library(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'download_library'
+2026-03-09 04:14:58 | [32mINFO[0m | Dependency resolution complete: 4 libraries
+2026-03-09 04:14:58 | [32mINFO[0m | Starting Output generation
+2026-03-09 04:14:58 | [32mINFO[0m | Generating output files...
+2026-03-09 04:14:58 | [32mINFO[0m | Generating text dependency tree...
+2026-03-09 04:14:58 | [32mINFO[0m | Text dependency tree written to /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_2026-03-09T04:14:58.275525.txt
+2026-03-09 04:14:58 | [32mINFO[0m | Generating text output (1/3)
+2026-03-09 04:14:58 | [32mINFO[0m | Generating JSON dependency tree...
+2026-03-09 04:14:58 | [32mINFO[0m | JSON dependency tree written to /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_2026-03-09T04:14:58.275525.json
+2026-03-09 04:14:58 | [32mINFO[0m | Generating json output (2/3)
+2026-03-09 04:14:58 | [32mINFO[0m | Generating issue-specific files...
+2026-03-09 04:14:58 | [32mINFO[0m | Issue file written to /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_POM_file_is_missing_2026-03-09T04:14:58.275525.txt
+2026-03-09 04:14:58 | [32mINFO[0m | Generating issues output (3/3)
+2026-03-09 04:14:58 | [32mINFO[0m | All output files generated successfully
+2026-03-09 04:14:58 | [32mINFO[0m | 
+DEPENDENCY TREE SUMMARY
+========================================
+Total libraries: 4
+Libraries with issues: 4
+Root libraries: 4
+
+Issues breakdown:
+  POM file is missing: 4
+
+Sample root libraries:
+  - commons-logging:commons-logging:1.2
+  - org.springframework:spring-jcl:5.3.0
+  - org.springframework:spring-core:5.3.0
+  - com.example:sample-lib:1.0.0
+2026-03-09 04:14:58 | [32mINFO[0m | Output generation completed successfully
+2026-03-09 04:14:58 | [32mINFO[0m | Output generation took 0.00 seconds
+2026-03-09 04:14:58 | [32mINFO[0m | ============================================================
+2026-03-09 04:14:58 | [32mINFO[0m | LOCAL-ONLY SCAN COMPLETE
+2026-03-09 04:14:58 | [32mINFO[0m | ============================================================
+2026-03-09 04:14:58 | [32mINFO[0m | Total time: 0.01 seconds
+2026-03-09 04:14:58 | [32mINFO[0m | Libraries found: 4
+2026-03-09 04:14:58 | [32mINFO[0m | Libraries with issues: 4
+2026-03-09 04:14:58 | [32mINFO[0m | Text output: /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_2026-03-09T04:14:58.275525.txt
+2026-03-09 04:14:58 | [32mINFO[0m | JSON output: /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_2026-03-09T04:14:58.275525.json
+2026-03-09 04:14:58 | [32mINFO[0m | ============================================================

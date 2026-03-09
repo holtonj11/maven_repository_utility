@@ -1,0 +1,16 @@
+total 540
+drwxr-xr-x 4 root root   4096 Mar  9 04:39 .
+drwxr-xr-x 6 user user   4096 Mar  9 04:39 ..
+-rw-r--r-- 1 root root   2149 Mar  9 04:39 __init__.py
+drwxr-xr-x 2 root root   4096 Mar  9 04:39 __pycache__
+-rw-r--r-- 1 root root  14865 Mar  9 04:03 config.py
+-rw-r--r-- 1 root root  20391 Mar  9 04:15 dependency_resolver.py
+drwxr-xr-x 2 root root   4096 Mar  9 04:16 directoryTree_output
+-rw-r--r-- 1 root root  16892 Mar  9 03:41 local_repository.py
+-rw-r--r-- 1 root root  10605 Mar  9 03:30 logger.py
+-rw-r--r-- 1 root root  24359 Mar  9 04:06 main.py
+-rw-r--r-- 1 root root 129752 Mar  9 04:16 maven-4.0.0.xsd
+-rw-r--r-- 1 root root 236635 Mar  9 04:22 maven_scraper.log
+-rw-r--r-- 1 root root  14587 Mar  9 03:38 output_generator.py
+-rw-r--r-- 1 root root  24496 Mar  9 03:32 pom_parser.py
+-rw-r--r-- 1 root root  25473 Mar  9 03:34 repository_client.py

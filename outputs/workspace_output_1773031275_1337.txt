@@ -1,0 +1,10 @@
+usage: main.py [-h] [--add-repo URL] [--local-repo PATH] [--config-file PATH]
+               [--xml-validation {simple,xsd}] [--xsd-file FILENAME]
+               [--xsd-url URL] [--xsd-dir PATH] [--output-dir PATH]
+               [--tree-dir-name NAME]
+               [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}]
+               [--no-file-log] [--no-console-log] [--log-file FILENAME]
+               [--max-retries N] [--retry-delay SECONDS] [--timeout SECONDS]
+               [--max-depth N] [--min-jar-size BYTES] [--local-only]
+               [--validate-local] [--save-config PATH] [--dry-run] [--verbose]
+main.py: error: unrecognized arguments: --download org.apache.commons:commons-lang3:3.12.0 --no-deps

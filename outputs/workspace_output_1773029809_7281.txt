@@ -1,0 +1,10 @@
+POM files created:
+total 24
+drwxr-xr-x 2 root root  4096 Mar  9 04:16 .
+drwxr-xr-x 3 root root  4096 Mar  9 04:11 ..
+-rw-r--r-- 1 root root 10240 Mar  9 04:14 spring-core-5.3.0.jar
+-rw-r--r-- 1 root root   908 Mar  9 04:16 spring-core-5.3.0.pom
+total 12
+drwxr-xr-x 2 root root 4096 Mar  9 04:16 .
+drwxr-xr-x 3 root root 4096 Mar  9 04:11 ..
+-rw-r--r-- 1 root root  148 Mar  9 04:16 invalid-lib-2.0.0.pom

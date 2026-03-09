@@ -1,0 +1,79 @@
+2026-03-09 04:16:53 | [32mINFO[0m | Running in LOCAL-ONLY mode - scanning local repository
+2026-03-09 04:16:53 | [32mINFO[0m | Local repository: /root/.m2/repository
+2026-03-09 04:16:53 | [32mINFO[0m | Scanning local repository...
+2026-03-09 04:16:53 | [32mINFO[0m | Scanning local repository: /root/.m2/repository
+2026-03-09 04:16:53 | [32mINFO[0m | Downloading XSD schema from https://maven.apache.org/xsd/maven-4.0.0.xsd
+2026-03-09 04:16:53 | [32mINFO[0m | XSD schema saved to /workspace/maven_repo_scraper/maven-4.0.0.xsd
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [32mINFO[0m | Scan complete: 5 libraries found
+2026-03-09 04:16:53 | [32mINFO[0m | Found 5 libraries in local repository
+2026-03-09 04:16:53 | [32mINFO[0m | Validating local repository...
+2026-03-09 04:16:53 | [32mINFO[0m | Validating local repository...
+2026-03-09 04:16:53 | [32mINFO[0m | Scanning local repository: /root/.m2/repository
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [32mINFO[0m | Scan complete: 5 libraries found
+2026-03-09 04:16:53 | [32mINFO[0m | Validation complete: 2/5 libraries with issues
+2026-03-09 04:16:53 | [32mINFO[0m | ============================================================
+2026-03-09 04:16:53 | [32mINFO[0m | VALIDATION RESULTS
+2026-03-09 04:16:53 | [32mINFO[0m | ============================================================
+2026-03-09 04:16:53 | [32mINFO[0m | Total libraries: 5
+2026-03-09 04:16:53 | [32mINFO[0m | Libraries with issues: 2
+2026-03-09 04:16:53 | [32mINFO[0m | 
+Issues by type:
+2026-03-09 04:16:53 | [32mINFO[0m |   HTML only content: 1
+2026-03-09 04:16:53 | [32mINFO[0m |   JAR file is invalid: 1
+2026-03-09 04:16:53 | [32mINFO[0m |   JAR file is missing but POM file present: 1
+2026-03-09 04:16:53 | [32mINFO[0m | Resolving dependencies from local POM files...
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | Missing version for dependency : in org.springframework:spring-core:5.3.0
+2026-03-09 04:16:53 | [33mWARNING[0m | Missing version for dependency : in org.springframework:spring-core:5.3.0
+2026-03-09 04:16:53 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:16:53 | [33mWARNING[0m | Missing version for dependency : in com.example:sample-lib:1.0.0
+2026-03-09 04:16:53 | [32mINFO[0m | Dependency resolution complete: 5 libraries
+2026-03-09 04:16:53 | [32mINFO[0m | Starting Output generation
+2026-03-09 04:16:53 | [32mINFO[0m | Generating output files...
+2026-03-09 04:16:53 | [32mINFO[0m | Generating text dependency tree...
+2026-03-09 04:16:53 | [32mINFO[0m | Text dependency tree written to /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_2026-03-09T04:16:53.885151.txt
+2026-03-09 04:16:53 | [32mINFO[0m | Generating text output (1/3)
+2026-03-09 04:16:53 | [32mINFO[0m | Generating JSON dependency tree...
+2026-03-09 04:16:53 | [32mINFO[0m | JSON dependency tree written to /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_2026-03-09T04:16:53.885151.json
+2026-03-09 04:16:53 | [32mINFO[0m | Generating json output (2/3)
+2026-03-09 04:16:53 | [32mINFO[0m | Generating issue-specific files...
+2026-03-09 04:16:53 | [32mINFO[0m | Issue file written to /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_HTML_only_content_2026-03-09T04:16:53.885151.txt
+2026-03-09 04:16:53 | [32mINFO[0m | Generating issues output (3/3)
+2026-03-09 04:16:53 | [32mINFO[0m | All output files generated successfully
+2026-03-09 04:16:53 | [32mINFO[0m | 
+DEPENDENCY TREE SUMMARY
+========================================
+Total libraries: 5
+Libraries with issues: 1
+Root libraries: 5
+
+Issues breakdown:
+  HTML only content: 1
+
+Sample root libraries:
+  - commons-logging:commons-logging:1.2
+  - org.springframework:spring-jcl:5.3.0
+  - org.springframework:spring-core:5.3.0
+  - com.example:sample-lib:1.0.0
+  - com.example:invalid-lib:2.0.0
+2026-03-09 04:16:53 | [32mINFO[0m | Output generation completed successfully
+2026-03-09 04:16:53 | [32mINFO[0m | Output generation took 0.00 seconds
+2026-03-09 04:16:53 | [32mINFO[0m | ============================================================
+2026-03-09 04:16:53 | [32mINFO[0m | LOCAL-ONLY SCAN COMPLETE
+2026-03-09 04:16:53 | [32mINFO[0m | ============================================================
+2026-03-09 04:16:53 | [32mINFO[0m | Total time: 0.10 seconds
+2026-03-09 04:16:53 | [32mINFO[0m | Libraries found: 5
+2026-03-09 04:16:53 | [32mINFO[0m | Libraries with issues: 1
+2026-03-09 04:16:53 | [32mINFO[0m | Text output: /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_2026-03-09T04:16:53.885151.txt
+2026-03-09 04:16:53 | [32mINFO[0m | JSON output: /workspace/maven_repo_scraper/directoryTree_output/dependencyTree_2026-03-09T04:16:53.885151.json
+2026-03-09 04:16:53 | [32mINFO[0m | ============================================================

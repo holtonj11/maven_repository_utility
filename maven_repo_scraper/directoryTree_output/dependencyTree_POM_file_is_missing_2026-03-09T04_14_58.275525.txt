@@ -1,0 +1,21 @@
+================================================================================
+DEPENDENCY TREE - POM file is missing
+Generated: 2026-03-09T04:14:58.276110
+Libraries with this issue: 4
+================================================================================
+
+|__ commons-logging:commons-logging:1.2 [ISSUES: POM file is missing] [ERROR: 'NoneType' object has no attribute 'download_library']
+
+----------------------------------------
+
+|__ org.springframework:spring-jcl:5.3.0 [ISSUES: POM file is missing] [ERROR: 'NoneType' object has no attribute 'download_library']
+
+----------------------------------------
+
+|__ org.springframework:spring-core:5.3.0 [ISSUES: POM file is missing] [ERROR: 'NoneType' object has no attribute 'download_library']
+
+----------------------------------------
+
+|__ com.example:sample-lib:1.0.0 [ISSUES: POM file is missing] [ERROR: 'NoneType' object has no attribute 'download_library']
+
+----------------------------------------

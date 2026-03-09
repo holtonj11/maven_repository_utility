@@ -1,0 +1,28 @@
+               [--validate-local] [--download COORD] [--download-file PATH]
+               [--no-deps] [--discover-group GROUP_ID] [--use-search-api]
+               [--no-search-api] [--save-config PATH] [--dry-run] [--verbose]
+--
+  --xsd-url URL         URL to download XSD schema from
+  --xsd-dir PATH        Directory containing XSD file (default: script
+                        directory)
+--
+  --max-retries N       Maximum number of retry attempts for downloads
+  --retry-delay SECONDS
+                        Delay between retry attempts
+--
+  --download COORD, -d COORD
+                        Download a specific library by Maven coordinate
+                        (groupId:artifactId[:version]). Can be used multiple
+--
+  --download-file PATH  Read library coordinates from a file (one coordinate
+                        per line).
+  --no-deps             When downloading specific libraries, skip downloading
+                        their dependencies.
+  --discover-group GROUP_ID
+                        Discover and download all libraries from a specific
+                        group ID (e.g., org.springframework). Can be used
+                        multiple times.
+--
+  --dry-run             Show what would be done without actually downloading
+  --verbose, -v         Enable verbose output
+

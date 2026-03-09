@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "generated": "2026-03-09T04:16:53.885428",
+    "totalLibraries": 5,
+    "librariesWithIssues": 1
+  },
+  "rootLibraries": [
+    {
+      "library": "commons-logging:commons-logging:1.2",
+      "version": "1.2",
+      "filePath": "/root/.m2/repository/commons-logging/commons-logging/1.2",
+      "issues": [],
+      "error": null,
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "commons-logging:commons-logging:1.2",
+      "dependencies": []
+    },
+    {
+      "library": "org.springframework:spring-jcl:5.3.0",
+      "version": "5.3.0",
+      "filePath": "/root/.m2/repository/org/springframework/spring-jcl/5.3.0",
+      "issues": [],
+      "error": null,
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "org.springframework:spring-jcl:5.3.0",
+      "dependencies": []
+    },
+    {
+      "library": "org.springframework:spring-core:5.3.0",
+      "version": "5.3.0",
+      "filePath": "/root/.m2/repository/org/springframework/spring-core/5.3.0",
+      "issues": [],
+      "error": null,
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "org.springframework:spring-core:5.3.0",
+      "dependencies": []
+    },
+    {
+      "library": "com.example:sample-lib:1.0.0",
+      "version": "1.0.0",
+      "filePath": "/root/.m2/repository/com/example/sample-lib/1.0.0",
+      "issues": [],
+      "error": null,
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "com.example:sample-lib:1.0.0",
+      "dependencies": []
+    },
+    {
+      "library": "com.example:invalid-lib:2.0.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/com/example/invalid-lib/2.0.0",
+      "issues": [
+        "HTML only content"
+      ],
+      "error": null,
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "com.example:invalid-lib:2.0.0",
+      "dependencies": []
+    }
+  ],
+  "allLibraries": [
+    {
+      "library": "com.example:invalid-lib:2.0.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/com/example/invalid-lib/2.0.0",
+      "issues": [
+        "HTML only content"
+      ],
+      "error": null,
+      "parentLibrary": null,
+      "parentLibraryPath": "com.example:invalid-lib:2.0.0",
+      "dependencyCount": 0
+    },
+    {
+      "library": "com.example:sample-lib:1.0.0",
+      "version": "1.0.0",
+      "filePath": "/root/.m2/repository/com/example/sample-lib/1.0.0",
+      "issues": [],
+      "error": null,
+      "parentLibrary": null,
+      "parentLibraryPath": "com.example:sample-lib:1.0.0",
+      "dependencyCount": 0
+    },
+    {
+      "library": "commons-logging:commons-logging:1.2",
+      "version": "1.2",
+      "filePath": "/root/.m2/repository/commons-logging/commons-logging/1.2",
+      "issues": [],
+      "error": null,
+      "parentLibrary": null,
+      "parentLibraryPath": "commons-logging:commons-logging:1.2",
+      "dependencyCount": 0
+    },
+    {
+      "library": "org.springframework:spring-core:5.3.0",
+      "version": "5.3.0",
+      "filePath": "/root/.m2/repository/org/springframework/spring-core/5.3.0",
+      "issues": [],
+      "error": null,
+      "parentLibrary": null,
+      "parentLibraryPath": "org.springframework:spring-core:5.3.0",
+      "dependencyCount": 0
+    },
+    {
+      "library": "org.springframework:spring-jcl:5.3.0",
+      "version": "5.3.0",
+      "filePath": "/root/.m2/repository/org/springframework/spring-jcl/5.3.0",
+      "issues": [],
+      "error": null,
+      "parentLibrary": null,
+      "parentLibraryPath": "org.springframework:spring-jcl:5.3.0",
+      "dependencyCount": 0
+    }
+  ]
+}

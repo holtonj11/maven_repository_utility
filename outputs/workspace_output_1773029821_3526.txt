@@ -1,0 +1,154 @@
+=== TEXT DEPENDENCY TREE ===
+================================================================================
+MAVEN DEPENDENCY TREE
+Generated: 2026-03-09T04:14:58.275609
+Total Libraries: 4
+Libraries with Issues: 4
+================================================================================
+
+|__ commons-logging:commons-logging:1.2 [ISSUES: POM file is missing] [ERROR: 'NoneType' object has no attribute 'download_library']
+
+|__ org.springframework:spring-jcl:5.3.0 [ISSUES: POM file is missing] [ERROR: 'NoneType' object has no attribute 'download_library']
+
+|__ org.springframework:spring-core:5.3.0 [ISSUES: POM file is missing] [ERROR: 'NoneType' object has no attribute 'download_library']
+
+|__ com.example:sample-lib:1.0.0 [ISSUES: POM file is missing] [ERROR: 'NoneType' object has no attribute 'download_library']
+
+
+================================================================================
+SUMMARY
+================================================================================
+Total unique libraries: 4
+Root libraries: 4
+Libraries with issues: 4
+
+Issues by type:
+  - POM file is missing: 4 libraries
+================================================================================
+MAVEN DEPENDENCY TREE
+Generated: 2026-03-09T04:16:53.885205
+Total Libraries: 5
+Libraries with Issues: 1
+================================================================================
+
+|__ commons-logging:commons-logging:1.2
+
+|__ org.springframework:spring-jcl:5.3.0
+
+|__ org.springframework:spring-core:5.3.0
+
+|__ com.example:sample-lib:1.0.0
+
+|__ com.example:invalid-lib:2.0.0 [ISSUES: HTML only content]
+
+
+================================================================================
+SUMMARY
+================================================================================
+Total unique libraries: 5
+Root libraries: 5
+Libraries with issues: 1
+
+Issues by type:
+  - HTML only content: 1 libraries
+================================================================================
+DEPENDENCY TREE - HTML only content
+Generated: 2026-03-09T04:16:53.885753
+Libraries with this issue: 1
+================================================================================
+
+|__ com.example:invalid-lib:2.0.0 [ISSUES: HTML only content]
+
+
+=== JSON DEPENDENCY TREE ===
+{
+  "metadata": {
+    "generated": "2026-03-09T04:14:58.275807",
+    "totalLibraries": 4,
+    "librariesWithIssues": 4
+  },
+  "rootLibraries": [
+    {
+      "library": "commons-logging:commons-logging:1.2",
+      "version": "",
+      "filePath": "/root/.m2/repository/commons-logging/commons-logging/1.2",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "commons-logging:commons-logging:1.2",
+      "dependencies": []
+    },
+    {
+      "library": "org.springframework:spring-jcl:5.3.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/org/springframework/spring-jcl/5.3.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "org.springframework:spring-jcl:5.3.0",
+      "dependencies": []
+    },
+    {
+      "library": "org.springframework:spring-core:5.3.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/org/springframework/spring-core/5.3.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "org.springframework:spring-core:5.3.0",
+      "dependencies": []
+    },
+    {
+      "library": "com.example:sample-lib:1.0.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/com/example/sample-lib/1.0.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "transitiveLibraries": [],
+      "parentLibraryPath": "com.example:sample-lib:1.0.0",
+      "dependencies": []
+    }
+  ],
+  "allLibraries": [
+    {
+      "library": "com.example:sample-lib:1.0.0",
+      "version": "",
+      "filePath": "/root/.m2/repository/com/example/sample-lib/1.0.0",
+      "issues": [
+        "POM file is missing"
+      ],
+      "error": "'NoneType' object has no attribute 'download_library'",
+      "parentLibrary": null,
+      "parentLibraryPath": "com.example:sample-lib:1.0.0",
+      "dependencyCount": 0
+    },
+    {
+      "library": "commons-logging:commons-logging:1.2",
+      "version": "",
+      "filePath": "/root/.m2/repository/commons-logging/commons-logging/1.2",
+      "issues": [
+        "POM file is missing"
+      ],
+
+=== ISSUE FILE (HTML Only Content) ===
+================================================================================
+DEPENDENCY TREE - HTML only content
+Generated: 2026-03-09T04:16:53.885753
+Libraries with this issue: 1
+================================================================================
+
+|__ com.example:invalid-lib:2.0.0 [ISSUES: HTML only content]
+
+----------------------------------------

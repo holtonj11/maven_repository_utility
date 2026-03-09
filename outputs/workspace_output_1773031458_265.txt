@@ -1,0 +1,41 @@
+                self.logger.info("\nFailed libraries:")
+                for coord in results['failed'][:20]:  # Show first 20
+                    self.logger.info(f"  - {coord}")
+                if len(results['failed']) > 20:
+                    self.logger.info(f"  ... and {len(results['failed']) - 20} more")
+            
+            self.logger.info("=" * 60)
+            
+            return 0 if not results['failed'] else 1
+            
+        except Exception as e:
+            if self.logger:
+                self.logger.exception(f"Fatal error: {e}")
+            else:
+                print(f"Fatal error: {e}", file=sys.stderr)
+            return 1
+        finally:
+            # Cleanup
+            if self.repository_client:
+                self.repository_client.close_all()
+    
+    def run(self, dry_run: bool = False, local_only: bool = False, validate_local: bool = False) -> int:
+        """
+        Run the complete scraping workflow.
+        
+        Args:
+            dry_run: If True, only show what would be done
+            local_only: If True, skip remote scraping and only scan local repository
+            validate_local: If True, validate all local files (used with local_only)
+        
+        Returns:
+            Exit code (0 for success, non-zero for errors)
+        """
+        # Handle local-only mode
+        if local_only:
+            return self.run_local_only(validate=validate_local)
+        
+        self.start_time = time.time()
+        
+        try:
+            # Initialize

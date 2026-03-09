@@ -1,0 +1,21 @@
+2026-03-09 04:45:39 | [32mINFO[0m | Running in DOWNLOAD mode - downloading specific libraries
+2026-03-09 04:45:39 | [32mINFO[0m | Local repository: /workspace/test_repo
+2026-03-09 04:45:39 | [32mINFO[0m | Initializing repository client...
+2026-03-09 04:45:39 | [32mINFO[0m | Downloading 1 libraries...
+2026-03-09 04:45:39 | [32mINFO[0m | Download dependencies: True
+2026-03-09 04:45:39 | [32mINFO[0m | Downloading library: org.slf4j:slf4j-api:1.7.36
+2026-03-09 04:45:40 | [31mERROR[0m | Request failed for https://repository.mulesoft.org/nexus/service/local/repositories/releases/content/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom after 1 attempts: 404 Client Error: Not Found for url: https://repository.mulesoft.org/nexus/service/local/repositories/releases/content/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom
+2026-03-09 04:45:40 | [31mERROR[0m | Request failed for https://repository.mulesoft.org/nexus/service/local/repositories/releases/content/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar after 1 attempts: 404 Client Error: Not Found for url: https://repository.mulesoft.org/nexus/service/local/repositories/releases/content/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar
+2026-03-09 04:45:40 | [31mERROR[0m | Request failed for https://repository.mulesoft.org/nexus/service/local/repositories/releases/content/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36-sources.jar after 1 attempts: 404 Client Error: Not Found for url: https://repository.mulesoft.org/nexus/service/local/repositories/releases/content/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36-sources.jar
+2026-03-09 04:45:41 | [31mERROR[0m | Request failed for https://repository.mulesoft.org/nexus/service/local/repositories/releases/content/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36-javadoc.jar after 1 attempts: 404 Client Error: Not Found for url: https://repository.mulesoft.org/nexus/service/local/repositories/releases/content/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36-javadoc.jar
+2026-03-09 04:45:41 | [33mWARNING[0m | lxml not available, falling back to simple validation. Install lxml for proper XSD validation: pip install lxml
+2026-03-09 04:45:41 | [32mINFO[0m | [1/1] ✓ org.slf4j:slf4j-api:1.7.36
+2026-03-09 04:45:41 | [32mINFO[0m | ============================================================
+2026-03-09 04:45:41 | [32mINFO[0m | DOWNLOAD MODE COMPLETE
+2026-03-09 04:45:41 | [32mINFO[0m | ============================================================
+2026-03-09 04:45:41 | [32mINFO[0m | Total time: 1.25 seconds
+2026-03-09 04:45:41 | [32mINFO[0m | Total libraries: 1
+2026-03-09 04:45:41 | [32mINFO[0m | Successful: 1
+2026-03-09 04:45:41 | [32mINFO[0m | Failed: 0
+2026-03-09 04:45:41 | [32mINFO[0m | Files downloaded: 4
+2026-03-09 04:45:41 | [32mINFO[0m | ============================================================

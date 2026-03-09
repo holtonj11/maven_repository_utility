@@ -1,0 +1,27 @@
+================================================================================
+MAVEN DEPENDENCY TREE
+Generated: 2026-03-09T04:16:53.885205
+Total Libraries: 5
+Libraries with Issues: 1
+================================================================================
+
+|__ commons-logging:commons-logging:1.2
+
+|__ org.springframework:spring-jcl:5.3.0
+
+|__ org.springframework:spring-core:5.3.0
+
+|__ com.example:sample-lib:1.0.0
+
+|__ com.example:invalid-lib:2.0.0 [ISSUES: HTML only content]
+
+
+================================================================================
+SUMMARY
+================================================================================
+Total unique libraries: 5
+Root libraries: 5
+Libraries with issues: 1
+
+Issues by type:
+  - HTML only content: 1 libraries

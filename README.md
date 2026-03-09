@@ -347,6 +347,17 @@ maven_repo_scraper/
 - Check output directory permissions
 - Run with appropriate user permissions
 
+**Library discovery shows 0 libraries**
+- Some Maven repositories require specific API access or have anti-scraping measures
+- Use `--local-only` mode if you already have a local repository
+- For Maven Central, consider using a mirror or specific library URLs
+- The MuleSoft Nexus repository may require different authentication
+
+**Note on Full Repository Scraping**: Scraping entire Maven Central or similar large repositories is resource-intensive and may take a very long time. The tool is best used for:
+1. Scanning your existing local repository (`--local-only`)
+2. Scraping specific smaller repositories
+3. Maintaining an existing local repository cache
+
 ## License
 
 MIT License

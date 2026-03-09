@@ -1,0 +1,3 @@
+Parsed: org.springframework:spring-core:5.3.21 -> group=org.springframework, artifact=spring-core, version=5.3.21
+Parsed: com.google.guava:guava -> group=com.google.guava, artifact=guava, version=None
+Parsed: org.apache.commons:commons-lang3:3.12.0 -> group=org.apache.commons, artifact=commons-lang3, version=3.12.0

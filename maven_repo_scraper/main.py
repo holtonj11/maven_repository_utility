@@ -59,6 +59,7 @@ from maven_repo_scraper.pom_parser import POMParser, IssueType
 from maven_repo_scraper.repository_client import MultiRepositoryClient, LibraryInfo
 from maven_repo_scraper.dependency_resolver import DependencyResolver, DependencyTree
 from maven_repo_scraper.output_generator import OutputGenerator
+from maven_repo_scraper.library_downloader import LibraryDownloader, LibraryCoordinate
 
 
 class MavenScraperApp:
@@ -519,6 +520,244 @@ class MavenScraperApp:
                 print(f"Fatal error: {e}", file=sys.stderr)
             return 1
     
+    def run_download_mode(
+        self,
+        coordinates: List[str],
+        download_dependencies: bool = True,
+        overwrite: bool = False
+    ) -> int:
+        """
+        Run in download mode - download specific libraries by coordinates.
+        
+        Args:
+            coordinates: List of Maven coordinate strings
+            download_dependencies: Whether to download dependencies
+            overwrite: Whether to overwrite existing files
+            
+        Returns:
+            Exit code (0 for success, non-zero for errors)
+        """
+        self.start_time = time.time()
+        
+        try:
+            # Initialize minimal components
+            self.logger = init_logger(self.config)
+            self.logger.info("Running in DOWNLOAD mode - downloading specific libraries")
+            self.logger.info(f"Local repository: {self.config.local_repository}")
+            
+            # Initialize repository client
+            self.logger.info("Initializing repository client...")
+            self.repository_client = MultiRepositoryClient(
+                repositories=self.config.repositories,
+                max_retries=self.config.max_retries,
+                retry_delay=self.config.retry_delay,
+                timeout=self.config.download_timeout,
+                max_concurrent=self.config.max_concurrent_downloads,
+                logger=self.logger
+            )
+            
+            # Initialize POM parser
+            self.pom_parser = POMParser(
+                validation_mode=self.config.xml_validation.validation_mode,
+                xsd_path=self.config.xml_validation.get_xsd_path(),
+                xsd_url=self.config.xml_validation.xsd_url,
+                min_jar_size=self.config.min_jar_size_bytes,
+                logger=self.logger
+            )
+            
+            # Create local repository directory
+            repo_path = Path(self.config.local_repository)
+            repo_path.mkdir(parents=True, exist_ok=True)
+            
+            # Initialize library downloader
+            downloader = LibraryDownloader(
+                repository_client=self.repository_client,
+                pom_parser=self.pom_parser,
+                local_repo=repo_path,
+                logger=self.logger
+            )
+            
+            # Download libraries
+            self.logger.info(f"Downloading {len(coordinates)} libraries...")
+            self.logger.info(f"Download dependencies: {download_dependencies}")
+            
+            def progress_callback(current: int, total: int, coord: str, success: bool):
+                status = "✓" if success else "✗"
+                self.logger.info(f"[{current}/{total}] {status} {coord}")
+            
+            results = downloader.download_libraries(
+                coordinates=coordinates,
+                download_dependencies=download_dependencies,
+                overwrite=overwrite,
+                progress_callback=progress_callback
+            )
+            
+            # Print summary
+            elapsed = time.time() - self.start_time
+            self.logger.info("=" * 60)
+            self.logger.info("DOWNLOAD MODE COMPLETE")
+            self.logger.info("=" * 60)
+            self.logger.info(f"Total time: {elapsed:.2f} seconds")
+            self.logger.info(f"Total libraries: {results['total']}")
+            self.logger.info(f"Successful: {len(results['successful'])}")
+            self.logger.info(f"Failed: {len(results['failed'])}")
+            self.logger.info(f"Files downloaded: {len(results['files_downloaded'])}")
+            
+            if results['failed']:
+                self.logger.info("\nFailed libraries:")
+                for coord in results['failed']:
+                    self.logger.info(f"  - {coord}")
+            
+            if results['errors']:
+                self.logger.info("\nErrors:")
+                for error in results['errors'][:10]:  # Show first 10 errors
+                    self.logger.info(f"  - {error}")
+                if len(results['errors']) > 10:
+                    self.logger.info(f"  ... and {len(results['errors']) - 10} more errors")
+            
+            self.logger.info("=" * 60)
+            
+            return 0 if not results['failed'] else 1
+            
+        except Exception as e:
+            if self.logger:
+                self.logger.exception(f"Fatal error: {e}")
+            else:
+                print(f"Fatal error: {e}", file=sys.stderr)
+            return 1
+        finally:
+            # Cleanup
+            if self.repository_client:
+                self.repository_client.close_all()
+    
+    def run_group_discovery_mode(
+        self,
+        group_ids: List[str],
+        download_dependencies: bool = True,
+        overwrite: bool = False
+    ) -> int:
+        """
+        Run in group discovery mode - discover and download all libraries from specific groups.
+        
+        Args:
+            group_ids: List of group IDs to discover
+            download_dependencies: Whether to download dependencies
+            overwrite: Whether to overwrite existing files
+            
+        Returns:
+            Exit code (0 for success, non-zero for errors)
+        """
+        self.start_time = time.time()
+        
+        try:
+            # Initialize minimal components
+            self.logger = init_logger(self.config)
+            self.logger.info("Running in GROUP DISCOVERY mode")
+            self.logger.info(f"Discovering groups: {group_ids}")
+            self.logger.info(f"Local repository: {self.config.local_repository}")
+            
+            # Initialize repository client
+            self.logger.info("Initializing repository client...")
+            self.repository_client = MultiRepositoryClient(
+                repositories=self.config.repositories,
+                max_retries=self.config.max_retries,
+                retry_delay=self.config.retry_delay,
+                timeout=self.config.download_timeout,
+                max_concurrent=self.config.max_concurrent_downloads,
+                logger=self.logger
+            )
+            
+            # Initialize POM parser
+            self.pom_parser = POMParser(
+                validation_mode=self.config.xml_validation.validation_mode,
+                xsd_path=self.config.xml_validation.get_xsd_path(),
+                xsd_url=self.config.xml_validation.xsd_url,
+                min_jar_size=self.config.min_jar_size_bytes,
+                logger=self.logger
+            )
+            
+            # Create local repository directory
+            repo_path = Path(self.config.local_repository)
+            repo_path.mkdir(parents=True, exist_ok=True)
+            
+            # Initialize library downloader
+            downloader = LibraryDownloader(
+                repository_client=self.repository_client,
+                pom_parser=self.pom_parser,
+                local_repo=repo_path,
+                logger=self.logger
+            )
+            
+            # Discover libraries from each group
+            all_coordinates = set()
+            
+            for group_id in group_ids:
+                self.logger.info(f"Discovering libraries in group: {group_id}")
+                
+                for client_name, client in self.repository_client.clients.items():
+                    if hasattr(client, 'discover_group_libraries'):
+                        try:
+                            for lib_info in client.discover_group_libraries(group_id):
+                                all_coordinates.add(lib_info.coordinate)
+                        except Exception as e:
+                            self.logger.error(f"Error discovering group {group_id} from {client_name}: {e}")
+            
+            self.logger.info(f"Discovered {len(all_coordinates)} unique libraries")
+            
+            if not all_coordinates:
+                self.logger.warning("No libraries found for specified groups")
+                return 0
+            
+            # Download all discovered libraries
+            self.logger.info(f"Downloading {len(all_coordinates)} libraries...")
+            self.logger.info(f"Download dependencies: {download_dependencies}")
+            
+            def progress_callback(current: int, total: int, coord: str, success: bool):
+                if current % 50 == 0 or current == total:
+                    status = "✓" if success else "✗"
+                    self.logger.info(f"[{current}/{total}] {status} {coord}")
+            
+            results = downloader.download_libraries(
+                coordinates=list(all_coordinates),
+                download_dependencies=download_dependencies,
+                overwrite=overwrite,
+                progress_callback=progress_callback
+            )
+            
+            # Print summary
+            elapsed = time.time() - self.start_time
+            self.logger.info("=" * 60)
+            self.logger.info("GROUP DISCOVERY MODE COMPLETE")
+            self.logger.info("=" * 60)
+            self.logger.info(f"Total time: {elapsed:.2f} seconds")
+            self.logger.info(f"Groups processed: {len(group_ids)}")
+            self.logger.info(f"Total libraries: {results['total']}")
+            self.logger.info(f"Successful: {len(results['successful'])}")
+            self.logger.info(f"Failed: {len(results['failed'])}")
+            self.logger.info(f"Files downloaded: {len(results['files_downloaded'])}")
+            
+            if results['failed']:
+                self.logger.info("\nFailed libraries:")
+                for coord in results['failed'][:20]:  # Show first 20
+                    self.logger.info(f"  - {coord}")
+                if len(results['failed']) > 20:
+                    self.logger.info(f"  ... and {len(results['failed']) - 20} more")
+            
+            self.logger.info("=" * 60)
+            
+            return 0 if not results['failed'] else 1
+            
+        except Exception as e:
+            if self.logger:
+                self.logger.exception(f"Fatal error: {e}")
+            else:
+                print(f"Fatal error: {e}", file=sys.stderr)
+            return 1
+        finally:
+            # Cleanup
+            if self.repository_client:
+                self.repository_client.close_all()
+    
     def run(self, dry_run: bool = False, local_only: bool = False, validate_local: bool = False) -> int:
         """
         Run the complete scraping workflow.
@@ -631,6 +870,49 @@ def main():
     dry_run = '--dry-run' in sys.argv
     local_only = '--local-only' in sys.argv
     validate_local = '--validate-local' in sys.argv
+    no_deps = '--no-deps' in sys.argv
+    
+    # Check for download mode
+    download_coordinates = getattr(config, 'download_coordinates', None)
+    download_file = getattr(config, 'download_file', None)
+    discover_groups = getattr(config, 'discover_groups', None)
+    
+    # Handle group discovery mode
+    if discover_groups:
+        exit_code = app.run_group_discovery_mode(
+            group_ids=discover_groups,
+            download_dependencies=not no_deps,
+            overwrite=dry_run
+        )
+        sys.exit(exit_code)
+    
+    if download_coordinates or download_file:
+        # Build list of coordinates
+        coordinates = list(download_coordinates) if download_coordinates else []
+        
+        # Read coordinates from file if specified
+        if download_file:
+            try:
+                with open(download_file, 'r') as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith('#'):
+                            coordinates.append(line)
+            except Exception as e:
+                print(f"Error reading download file: {e}", file=sys.stderr)
+                sys.exit(1)
+        
+        if coordinates:
+            # Run in download mode
+            exit_code = app.run_download_mode(
+                coordinates=coordinates,
+                download_dependencies=not no_deps,
+                overwrite=dry_run
+            )
+            sys.exit(exit_code)
+        else:
+            print("No coordinates specified for download", file=sys.stderr)
+            sys.exit(1)
     
     # Run the application
     exit_code = app.run(

@@ -1,0 +1,8 @@
+87:    download_timeout: int = 300  # seconds
+88:    max_concurrent_downloads: int = 5
+166:        'download_timeout': config.download_timeout,
+167:        'max_concurrent_downloads': config.max_concurrent_downloads,
+237:        help='URL to download XSD schema from'
+293:        help='Maximum number of retry attempts for downloads'
+347:        help='Show what would be done without actually downloading'
+422:        download_timeout=args.timeout,

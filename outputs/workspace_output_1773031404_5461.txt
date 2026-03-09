@@ -1,0 +1,2 @@
+369:    def run_local_only(self, validate: bool = False) -> int:
+523:    def run(self, dry_run: bool = False, local_only: bool = False, validate_local: bool = False) -> int:

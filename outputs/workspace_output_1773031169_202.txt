@@ -1,3 +1,4 @@
+-rw-r--r-- 1 root root 1987 Mar  9 03:43 /workspace/maven_repo_scraper/__init__.py
 """
 Maven Repository Scraper and Maintenance Tool
 
@@ -61,11 +62,6 @@ from .local_repository import (
     LocalLibrary
 )
 
-from .library_downloader import (
-    LibraryDownloader,
-    LibraryCoordinate
-)
-
 __version__ = "1.0.0"
 __author__ = "Maven Repository Scraper Team"
 
@@ -111,9 +107,5 @@ __all__ = [
     
     # Local Repository
     'LocalRepositoryManager',
-    'LocalLibrary',
-    
-    # Library Downloader
-    'LibraryDownloader',
-    'LibraryCoordinate'
+    'LocalLibrary'
 ]
