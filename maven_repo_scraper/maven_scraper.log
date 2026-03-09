@@ -1,0 +1,4 @@
+2026-03-09 04:10:56 | INFO     |  |  | Running in LOCAL-ONLY mode - scanning local repository
+2026-03-09 04:10:56 | INFO     |  |  | Local repository: /root/.m2/repository
+2026-03-09 04:10:56 | ERROR    |  |  | Local repository does not exist: /root/.m2/repository
+2026-03-09 04:10:56 | INFO     |  |  | Creating directory structure...

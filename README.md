@@ -47,6 +47,7 @@ pip install lxml
 ### Basic Usage
 
 ```bash
+# Full scrape from remote repositories
 python maven_scraper.py
 ```
 
@@ -55,6 +56,27 @@ This will:
 2. Download libraries to `~/.m2/repository`
 3. Resolve all dependencies
 4. Generate output files in `./directoryTree_output/`
+
+### Local-Only Mode (No Remote Scraping)
+
+If you already have a local `.m2/repository` and just want to generate the dependency tree without scraping remote repositories:
+
+```bash
+# Scan local repository only, generate dependency tree
+python maven_scraper.py --local-only
+
+# Scan and validate all local files
+python maven_scraper.py --local-only --validate-local
+
+# Specify a custom local repository path
+python maven_scraper.py --local-only --local-repo /path/to/m2/repository
+```
+
+This is useful for:
+- Auditing your existing local Maven repository
+- Generating dependency trees without network access
+- Validating all POM and JAR files locally
+- Creating reports on issues in your local cache
 
 ### Command-Line Options
 

@@ -321,6 +321,19 @@ Examples:
         help='Minimum valid JAR file size in bytes (default: 5120 = 5KB)'
     )
     
+    # Mode arguments
+    mode_group = parser.add_argument_group('Execution Mode')
+    mode_group.add_argument(
+        '--local-only',
+        action='store_true',
+        help='Skip remote repository scraping. Only scan the local repository and generate dependency tree from existing files.'
+    )
+    mode_group.add_argument(
+        '--validate-local',
+        action='store_true',
+        help='When used with --local-only, also validate all POM and JAR files in the local repository.'
+    )
+    
     # Utility arguments
     util_group = parser.add_argument_group('Utility Options')
     util_group.add_argument(

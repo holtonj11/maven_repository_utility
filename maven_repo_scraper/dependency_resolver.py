@@ -194,7 +194,7 @@ class DependencyResolver:
         
         Args:
             local_repo: Path to local Maven repository
-            repository_client: Client for accessing remote repositories
+            repository_client: Client for accessing remote repositories (can be None for local-only mode)
             pom_parser: Parser for POM files
             max_depth: Maximum dependency resolution depth
             include_optional: Whether to include optional dependencies
@@ -212,6 +212,9 @@ class DependencyResolver:
         
         # Track resolved coordinates to prevent infinite recursion
         self._resolving: Set[str] = set()
+        
+        # Track missing dependencies in local-only mode
+        self._missing_dependencies: Set[str] = set()
     
     def resolve_library(
         self,
@@ -331,8 +334,8 @@ class DependencyResolver:
             except Exception as e:
                 self.logger.warning(f"Error reading local POM {pom_file}: {e}")
         
-        # If not found locally, try remote
-        if not pom_content:
+        # If not found locally, try remote (only if repository_client is available)
+        if not pom_content and self.repository_client:
             pom_filename = f"{library.artifact_id}-{library.version}.pom"
             pom_content = self.repository_client.get_file_content(library, pom_filename)
             
@@ -364,6 +367,10 @@ class DependencyResolver:
         Returns:
             True if redownload was attempted, False otherwise
         """
+        # Skip redownload in local-only mode (no repository client)
+        if not self.repository_client:
+            return False
+        
         # Only redownload for certain issue types
         redownload_issues = {
             IssueType.POM_MISSING,

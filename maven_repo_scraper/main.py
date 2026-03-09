@@ -365,16 +365,176 @@ class MavenScraperApp:
         
         return results
     
-    def run(self, dry_run: bool = False) -> int:
+    def run_local_only(self, validate: bool = False) -> int:
+        """
+        Run in local-only mode - scan local repository without scraping remote.
+        
+        Args:
+            validate: Whether to validate all local files
+        
+        Returns:
+            Exit code (0 for success, non-zero for errors)
+        """
+        from .local_repository import LocalRepositoryManager
+        
+        self.start_time = time.time()
+        
+        try:
+            # Initialize minimal components
+            self.logger = init_logger(self.config)
+            self.logger.info("Running in LOCAL-ONLY mode - scanning local repository")
+            self.logger.info(f"Local repository: {self.config.local_repository}")
+            
+            # Check if local repository exists
+            repo_path = Path(self.config.local_repository)
+            if not repo_path.exists():
+                self.logger.error(f"Local repository does not exist: {repo_path}")
+                self.logger.info("Creating directory structure...")
+                repo_path.mkdir(parents=True, exist_ok=True)
+                return 0
+            
+            # Initialize POM parser for validation
+            self.pom_parser = POMParser(
+                validation_mode=self.config.xml_validation.validation_mode,
+                xsd_path=self.config.xml_validation.get_xsd_path(),
+                xsd_url=self.config.xml_validation.xsd_url,
+                min_jar_size=self.config.min_jar_size_bytes,
+                logger=self.logger
+            )
+            
+            # Initialize local repository manager
+            local_manager = LocalRepositoryManager(
+                repo_path=repo_path,
+                pom_parser=self.pom_parser,
+                min_jar_size=self.config.min_jar_size_bytes,
+                logger=self.logger
+            )
+            
+            # Scan local repository
+            self.logger.info("Scanning local repository...")
+            libraries: Dict[str, LibraryInfo] = {}
+            
+            def scan_progress(count: int, coord: str):
+                if count % 100 == 0:
+                    self.logger.info(f"Scanned {count} libraries...")
+            
+            for local_lib in local_manager.scan_repository(scan_progress):
+                lib_info = LibraryInfo(
+                    group_id=local_lib.group_id,
+                    artifact_id=local_lib.artifact_id,
+                    version=local_lib.version,
+                    repository="local",
+                    url="",
+                    local_path=local_lib.path,
+                    has_pom=local_lib.has_pom,
+                    has_jar=local_lib.has_jar
+                )
+                libraries[lib_info.coordinate] = lib_info
+            
+            self.logger.info(f"Found {len(libraries)} libraries in local repository")
+            
+            if not libraries:
+                self.logger.warning("No libraries found in local repository")
+                return 0
+            
+            # Validate if requested
+            if validate:
+                self.logger.info("Validating local repository...")
+                validation_results = local_manager.validate_repository()
+                
+                self.logger.info("=" * 60)
+                self.logger.info("VALIDATION RESULTS")
+                self.logger.info("=" * 60)
+                self.logger.info(f"Total libraries: {validation_results['total_libraries']}")
+                self.logger.info(f"Libraries with issues: {validation_results['libraries_with_issues']}")
+                
+                if validation_results['issues_by_type']:
+                    self.logger.info("\nIssues by type:")
+                    for issue, count in sorted(validation_results['issues_by_type'].items()):
+                        self.logger.info(f"  {issue}: {count}")
+                else:
+                    self.logger.info("\nNo issues found!")
+            
+            # Initialize minimal dependency resolver (without remote access)
+            self.dependency_resolver = DependencyResolver(
+                local_repo=repo_path,
+                repository_client=None,  # No remote access needed
+                pom_parser=self.pom_parser,
+                max_depth=self.config.max_dependency_depth,
+                include_optional=self.config.include_optional_dependencies,
+                logger=self.logger
+            )
+            
+            # Resolve dependencies from local POMs only
+            self.logger.info("Resolving dependencies from local POM files...")
+            tree = DependencyTree()
+            
+            for coord, lib_info in libraries.items():
+                try:
+                    resolved = self.dependency_resolver.resolve_library(lib_info)
+                    tree.add_library(resolved)
+                    
+                    if not resolved.parent or resolved.parent.coordinate not in libraries:
+                        tree.root_libraries.append(resolved)
+                        
+                except Exception as e:
+                    self.logger.error(f"Error resolving {coord}: {e}")
+            
+            self.logger.info(f"Dependency resolution complete: {tree.total_count} libraries")
+            
+            # Initialize output generator
+            self.output_generator = OutputGenerator(
+                output_dir=self.config.output.output_directory,
+                tree_dir_name=self.config.output.tree_directory_name,
+                timestamp_format=self.config.output.timestamp_format,
+                logger=self.logger
+            )
+            
+            # Generate outputs
+            with Timer(self.logger, "Output generation"):
+                output_results = self.generate_outputs(tree)
+            
+            # Print final summary
+            elapsed = time.time() - self.start_time
+            self.logger.info("=" * 60)
+            self.logger.info("LOCAL-ONLY SCAN COMPLETE")
+            self.logger.info("=" * 60)
+            self.logger.info(f"Total time: {elapsed:.2f} seconds")
+            self.logger.info(f"Libraries found: {len(libraries)}")
+            self.logger.info(f"Libraries with issues: {tree.issue_count}")
+            
+            if output_results.get("text_file"):
+                self.logger.info(f"Text output: {output_results['text_file']}")
+            if output_results.get("json_file"):
+                self.logger.info(f"JSON output: {output_results['json_file']}")
+            
+            self.logger.info("=" * 60)
+            
+            return 0
+            
+        except Exception as e:
+            if self.logger:
+                self.logger.exception(f"Fatal error: {e}")
+            else:
+                print(f"Fatal error: {e}", file=sys.stderr)
+            return 1
+    
+    def run(self, dry_run: bool = False, local_only: bool = False, validate_local: bool = False) -> int:
         """
         Run the complete scraping workflow.
         
         Args:
             dry_run: If True, only show what would be done
+            local_only: If True, skip remote scraping and only scan local repository
+            validate_local: If True, validate all local files (used with local_only)
         
         Returns:
             Exit code (0 for success, non-zero for errors)
         """
+        # Handle local-only mode
+        if local_only:
+            return self.run_local_only(validate=validate_local)
+        
         self.start_time = time.time()
         
         try:
@@ -467,11 +627,17 @@ def main():
     # Create and run application
     app = MavenScraperApp(config)
     
-    # Get dry_run from sys.argv (not passed to config)
+    # Get mode flags from sys.argv (not passed to config)
     dry_run = '--dry-run' in sys.argv
+    local_only = '--local-only' in sys.argv
+    validate_local = '--validate-local' in sys.argv
     
     # Run the application
-    exit_code = app.run(dry_run=dry_run)
+    exit_code = app.run(
+        dry_run=dry_run,
+        local_only=local_only,
+        validate_local=validate_local
+    )
     
     sys.exit(exit_code)
 
